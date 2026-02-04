@@ -1,7 +1,7 @@
 const screen = document.getElementById("screen");
 const add_btn = document.querySelector(".add_btn")
 const notif = document.querySelector(".notif")
-const notification= document.querySelector(".notification")
+const notification = document.querySelector(".notification")
 const add_input_box_bg = document.querySelector(".add_input_box_bg")
 const cancle = document.querySelector("#cancle")
 const next = document.querySelector("#next")
@@ -23,9 +23,57 @@ const games = document.querySelector(".games")
 const isnagram = document.querySelector(".isnagram")
 const twitter = document.querySelector(".twitter")
 const tiktok = document.querySelector(".tiktok")
+const statuse = "Password is Blocked"
+const body = document.querySelector("#body")
+const boxes = document.querySelector(".boxes")
 let media_name = ""
 let accses_stage = 0
 
+
+
+let token = JSON.parse(localStorage.getItem("saved_info"))
+if (!localStorage.getItem("saved_info")) {
+    localStorage.setItem("saved_info", null)
+}
+if (!Array.isArray(token)) {
+    token = [];
+}
+let i = 0;
+let currentBoxes = boxes; // اولین کانتینر اصلی
+
+token.forEach(item => {
+
+    i++;
+
+    const box = document.createElement("div");
+    box.setAttribute("class", "box");
+
+    const box_bg = document.createElement("div");
+    box_bg.setAttribute("class", "box_bg");
+
+    const span = document.createElement("span");
+    span.setAttribute("class", "head_icon");
+    span.textContent = item.media;
+
+    const st = document.createElement("p");
+    st.setAttribute("id", "status");
+    st.textContent = statuse;
+
+    box_bg.append(span, st);
+    box.append(box_bg);
+
+    // اگر به 3 رسیدیم، کانتینر جدید بساز
+    if (i > 3 && (i - 1) % 3 === 0) {
+        const boxes2 = document.createElement("div");
+        boxes2.setAttribute("class", "boxes");
+        body.append(boxes2);
+        currentBoxes = boxes2; // کانتینر فعال رو عوض کن
+    }
+
+    // box رو داخل کانتینر فعال بنداز
+    currentBoxes.append(box);
+
+});
 
 
 
@@ -197,10 +245,10 @@ next.addEventListener("click", () => {
         add_1.style.display = "none"
         m_name.textContent = media_name
         m_name.style.color = "orange"
-    }else{
+    } else {
         notif.style.display = "flex"
-        setTimeout(()=>{notif.style.animation = "notif_close 1s ease alternate"},3000)
-        setTimeout(()=>{notif.style.animation = "notif 1s ease alternate" , notif.style.display = "none"},4000)
+        setTimeout(() => { notif.style.animation = "notif_close 1s ease alternate" }, 3000)
+        setTimeout(() => { notif.style.animation = "notif 1s ease alternate", notif.style.display = "none" }, 4000)
     }
 })
 
@@ -209,11 +257,14 @@ next2.addEventListener("click", () => {
         console.log("accese")
         add_2.style.display = "none"
         add_3.style.display = "flex"
+        const saved = { "media": media_name, "username": email.value.trim(), "password": password.value.trim() }
+        const accses_token = token.push(saved)
+        localStorage.setItem("saved_info", JSON.stringify(token))
         typeLine();
-    }else{
+    } else {
         notif.style.display = "flex"
-        setTimeout(()=>{notif.style.animation = "notif_close 1s ease alternate"},3000)
-        setTimeout(()=>{notif.style.animation = "notif 1s ease alternate" , notif.style.display = "none"},4000)
+        setTimeout(() => { notif.style.animation = "notif_close 1s ease alternate" }, 3000)
+        setTimeout(() => { notif.style.animation = "notif 1s ease alternate", notif.style.display = "none" }, 4000)
     }
 })
 
@@ -285,6 +336,7 @@ function typeLine() {
         email.value = ""
         password.value = ""
         c_password.value = ""
+        location.reload()
     }
 
     const text = lines[lineIndex];
