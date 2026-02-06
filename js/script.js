@@ -28,9 +28,12 @@ const body = document.querySelector("#body")
 const boxes = document.querySelector(".boxes")
 let media_name = ""
 let accses_stage = 0
+const svg_ns = "http://www.w3.org/2000/svg"
 
-number = ["1","2","3","4","5","6","7","8","9","0"]
-char = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+number = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+char = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+
 
 
 
@@ -38,178 +41,499 @@ char = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r",
 
 let parse_passwording = ""
 let token = JSON.parse(localStorage.getItem("saved_info"))
-console.log(token[0].username.length)
-let a = token[0].username
-for (let g = 0 ; g< a.length; g+=4){
-    const chunk = a.substring(g,g+4)
-    if(chunk == "#bty"){
-        parse_passwording += "a"
-    }else if(chunk == "%&o("){
-        parse_passwording += "b"
-    }else if(chunk == "ph67"){
-        parse_passwording += "c"
-    }else if(chunk == "kw3^"){
-        parse_passwording += "d"
-    }else if(chunk == "o09#"){
-        parse_passwording += "e"
-    }else if(chunk == "5&#@"){
-        parse_passwording += "f"
-    }else if(chunk == "k3%3"){
-        parse_passwording += "g"
-    }else if(chunk == "opd&"){
-        parse_passwording += "h"
-    }else if(chunk == "q$#$"){
-        parse_passwording += "i"
-    }else if(chunk == "kdj%"){
-        parse_passwording += "j"
-    }else if(chunk == "xbk,"){
-        parse_passwording += "k"
-    }else if(chunk == "mka#"){
-        parse_passwording += "l"
-    }else if(chunk == "2tyu"){
-        parse_passwording += "m"
-    }else if(chunk == "lmlk"){
-        parse_passwording += "n"
-    }else if(chunk == ":lom"){
-        parse_passwording += "o"
-    }else if(chunk == "!(j*"){
-        parse_passwording += "p"
-    }else if(chunk == ":f#@"){
-        parse_passwording += "q"
-    }else if(chunk == "j$@#"){
-        parse_passwording += "r"
-    }else if(chunk == "pl$)"){
-        parse_passwording += "t"
-    }else if(chunk == "gew@"){
-        parse_passwording += "u"
-    }else if(chunk == "#kdsn"){
-        parse_passwording += "v"
-    }else if(chunk == "lk!!"){
-        parse_passwording += "w"
-    }else if(chunk == "^$%#"){
-        parse_passwording += "x"
-    }else if(chunk == "****"){
-        parse_passwording += "y"
-    }else if(chunk == "&^&&"){
-        parse_passwording += "z"
-    }else if(chunk == "####"){
-        parse_passwording += "_"
-    }else if(chunk == "&$#@"){
-        parse_passwording += "-"
-    }else if(chunk == "FjnK"){
-        parse_passwording += "="
-    }else if(chunk == "HDS6"){
-        parse_passwording += "+"
-    }else if(chunk == ":;lm"){
-        parse_passwording += "!"
-    }else if(chunk == "<sk,"){
-        parse_passwording += "@"
-    }else if(chunk == "T$^5"){
-        parse_passwording += "#"
-    }else if(chunk == "%&%4"){
-        parse_passwording += "$"
-    }else if(chunk == "&REl"){
-        parse_passwording += "%"
-    }else if(chunk == "DWEr"){
-        parse_passwording += "^"
-    }else if(chunk == "1342"){
-        parse_passwording += "&"
-    }else if(chunk == "1sfD"){
-        parse_passwording += "*"
-    }else if(chunk == "sfss"){
-        parse_passwording += "("
-    }else if(chunk == "LIjm"){
-        parse_passwording += ")"
-    }else if(chunk == "ADWR"){
-        parse_passwording += "|"
-    }else if(chunk == "wqew"){
-        parse_passwording += "~"
-    }else if(chunk == "vyge"){
-        parse_passwording += ":"
-    }else if(chunk == "jmse"){
-        parse_passwording += ";"
-    }else if(chunk == "shvb"){
-        parse_passwording += "."
-    }else if(chunk == "Mjku"){
-        parse_passwording += ">"
-    }else if(chunk == "$#nj"){
-        parse_passwording += "<"
-    }else if(chunk == "&&kj"){
-        parse_passwording += ","
-    }else if(chunk == "!!!j"){
-        parse_passwording += "1"
-    }else if(chunk == "#$|k"){
-        parse_passwording += "2"
-    }else if(chunk == "SA3w"){
-        parse_passwording += "3"
-    }else if(chunk == "Rioy"){
-        parse_passwording += "4"
-    }else if(chunk == "Iw32"){
-        parse_passwording += "5"
-    }else if(chunk == "FKwu"){
-        parse_passwording += "6"
-    }else if(chunk == "ihs)"){
-        parse_passwording += "7"
-    }else if(chunk == "SI3%"){
-        parse_passwording += "8"
-    }else if(chunk == "Hw89"){
-        parse_passwording += "9"
-    }else if(chunk == "oki@"){
-        parse_passwording += "0"
-    }
-
-}
-console.log(token[0].username)
-console.log(parse_passwording)
-
-
-for(t in token){
-    // const pass_page = document 
-}
-
-
+// console.log(token)
 if (!localStorage.getItem("saved_info")) {
     localStorage.setItem("saved_info", null)
 }
 if (!Array.isArray(token)) {
     token = [];
 }
-let i = 0;
-let currentBoxes = boxes; // اولین کانتینر اصلی
+if (token != null) {
+    let a = ""
+    let b = ""
+    let i = 0;
+    let currentBoxes = boxes;
+    for (t in token) {
+        parse_passwording = ""
+        parse_passwording2 = ""
+        a = token[t].username
+        b = token[t].password
 
-token.forEach(item => {
+        for (let g = 0; g < a.length; g += 4) {
+            const chunk = a.substring(g, g + 4)
+            if (chunk == "#bty") {
+                parse_passwording += "a"
+            } else if (chunk == "%&o(") {
+                parse_passwording += "b"
+            } else if (chunk == "ph67") {
+                parse_passwording += "c"
+            } else if (chunk == "%&o(") {
+                parse_passwording += "d"
+            } else if (chunk == "uyt8") {
+                parse_passwording += "S"
+            } else if (chunk == "5yt8") {
+                parse_passwording += "s"
+            } else if (chunk == "o09#") {
+                parse_passwording += "e"
+            } else if (chunk == "5&#@") {
+                parse_passwording += "f"
+            } else if (chunk == "k3%3") {
+                parse_passwording += "g"
+            } else if (chunk == "opd&") {
+                parse_passwording += "h"
+            } else if (chunk == "q$#$") {
+                parse_passwording += "i"
+            } else if (chunk == "kdj%") {
+                parse_passwording += "j"
+            } else if (chunk == "xbk,") {
+                parse_passwording += "k"
+            } else if (chunk == "mka#") {
+                parse_passwording += "l"
+            } else if (chunk == "2tyu") {
+                parse_passwording += "m"
+            } else if (chunk == "lmlk") {
+                parse_passwording += "n"
+            } else if (chunk == ":lom") {
+                parse_passwording += "o"
+            } else if (chunk == "!(j*") {
+                parse_passwording += "p"
+            } else if (chunk == ":f#@") {
+                parse_passwording += "q"
+            } else if (chunk == "j$@#") {
+                parse_passwording += "r"
+            } else if (chunk == "pl$)") {
+                parse_passwording += "t"
+            } else if (chunk == "gew@") {
+                parse_passwording += "u"
+            } else if (chunk == "#kdsn") {
+                parse_passwording += "v"
+            } else if (chunk == "lk!!") {
+                parse_passwording += "w"
+            } else if (chunk == "^$%#") {
+                parse_passwording += "x"
+            } else if (chunk == "****") {
+                parse_passwording += "y"
+            } else if (chunk == "&^&&") {
+                parse_passwording += "z"
+            } else if (chunk == "5bty") {
+                parse_passwording += "A"
+            } else if (chunk == "4&o(") {
+                parse_passwording += "B"
+            } else if (chunk == "3h67") {
+                parse_passwording += "C"
+            } else if (chunk == "2w3^") {
+                parse_passwording += "D"
+            } else if (chunk == "109#") {
+                parse_passwording += "E"
+            } else if (chunk == "0&#@") {
+                parse_passwording += "F"
+            } else if (chunk == "93%3") {
+                parse_passwording += "G"
+            } else if (chunk == "8pd&") {
+                parse_passwording += "H"
+            } else if (chunk == "7$#$") {
+                parse_passwording += "I"
+            } else if (chunk == "6dj%") {
+                parse_passwording += "J"
+            } else if (chunk == "5bk,") {
+                parse_passwording += "K"
+            } else if (chunk == "4ka#") {
+                parse_passwording += "L"
+            } else if (chunk == "3tyu") {
+                parse_passwording += "M"
+            } else if (chunk == "1mlk") {
+                parse_passwording += "N"
+            } else if (chunk == "0lom") {
+                parse_passwording += "O"
+            } else if (chunk == "9(j*") {
+                parse_passwording += "P"
+            } else if (chunk == "8f#@") {
+                parse_passwording += "Q"
+            } else if (chunk == "7$@#") {
+                parse_passwording += "R"
+            } else if (chunk == "6l$)") {
+                parse_passwording += "T"
+            } else if (chunk == "5ew@") {
+                parse_passwording += "U"
+            } else if (chunk == "4kdsn") {
+                parse_passwording += "V"
+            } else if (chunk == "3k!!") {
+                parse_passwording += "W"
+            } else if (chunk == "2$%#") {
+                parse_passwording += "X"
+            } else if (chunk == "1***") {
+                parse_passwording += "Y"
+            } else if (chunk == "0^&&") {
+                parse_passwording += "Z"
+            } else if (chunk == "####") {
+                parse_passwording += "_"
+            } else if (chunk == "&$#@") {
+                parse_passwording += "-"
+            } else if (chunk == "FjnK") {
+                parse_passwording += "="
+            } else if (chunk == "HDS6") {
+                parse_passwording += "+"
+            } else if (chunk == ":;lm") {
+                parse_passwording += "!"
+            } else if (chunk == "<sk,") {
+                parse_passwording += "@"
+            } else if (chunk == "T$^5") {
+                parse_passwording += "#"
+            } else if (chunk == "%&%4") {
+                parse_passwording += "$"
+            } else if (chunk == "&REl") {
+                parse_passwording += "%"
+            } else if (chunk == "DWEr") {
+                parse_passwording += "^"
+            } else if (chunk == "1342") {
+                parse_passwording += "&"
+            } else if (chunk == "1sfD") {
+                parse_passwording += "*"
+            } else if (chunk == "sfss") {
+                parse_passwording += "("
+            } else if (chunk == "LIjm") {
+                parse_passwording += ")"
+            } else if (chunk == "ADWR") {
+                parse_passwording += "|"
+            } else if (chunk == "wqew") {
+                parse_passwording += "~"
+            } else if (chunk == "vyge") {
+                parse_passwording += ":"
+            } else if (chunk == "jmse") {
+                parse_passwording += ";"
+            } else if (chunk == "shvb") {
+                parse_passwording += "."
+            } else if (chunk == "Mjku") {
+                parse_passwording += ">"
+            } else if (chunk == "$#nj") {
+                parse_passwording += "<"
+            } else if (chunk == "&&kj") {
+                parse_passwording += ","
+            } else if (chunk == "!!!j") {
+                parse_passwording += "1"
+            } else if (chunk == "#$|k") {
+                parse_passwording += "2"
+            } else if (chunk == "SA3w") {
+                parse_passwording += "3"
+            } else if (chunk == "Rioy") {
+                parse_passwording += "4"
+            } else if (chunk == "Iw32") {
+                parse_passwording += "5"
+            } else if (chunk == "FKwu") {
+                parse_passwording += "6"
+            } else if (chunk == "ihs)") {
+                parse_passwording += "7"
+            } else if (chunk == "SI3%") {
+                parse_passwording += "8"
+            } else if (chunk == "Hw89") {
+                parse_passwording += "9"
+            } else if (chunk == "oki@") {
+                parse_passwording += "0"
+            }
+        }
+        for (let g = 0; g < a.length; g += 4) {
+            const chunk2 = b.substring(g, g + 4)
+            if (chunk2 == "#bty") {
+                parse_passwording2 += "a"
+            } else if (chunk2 == "%&o(") {
+                parse_passwording2 += "b"
+            } else if (chunk2 == "uyt8") {
+                parse_passwording2 += "S"
+            } else if (chunk2 == "5yt8") {
+                parse_passwording2 += "s"
+            } else if (chunk2 == "ph67") {
+                parse_passwording2 += "c"
+            } else if (chunk2 == "kw3^") {
+                parse_passwording2 += "d"
+            } else if (chunk2 == "o09#") {
+                parse_passwording2 += "e"
+            } else if (chunk2 == "5&#@") {
+                parse_passwording2 += "f"
+            } else if (chunk2 == "k3%3") {
+                parse_passwording2 += "g"
+            } else if (chunk2 == "opd&") {
+                parse_passwording2 += "h"
+            } else if (chunk2 == "q$#$") {
+                parse_passwording2 += "i"
+            } else if (chunk2 == "kdj%") {
+                parse_passwording2 += "j"
+            } else if (chunk2 == "xbk,") {
+                parse_passwording2 += "k"
+            } else if (chunk2 == "mka#") {
+                parse_passwording2 += "l"
+            } else if (chunk2 == "2tyu") {
+                parse_passwording2 += "m"
+            } else if (chunk2 == "lmlk") {
+                parse_passwording2 += "n"
+            } else if (chunk2 == ":lom") {
+                parse_passwording2 += "o"
+            } else if (chunk2 == "!(j*") {
+                parse_passwording2 += "p"
+            } else if (chunk2 == ":f#@") {
+                parse_passwording2 += "q"
+            } else if (chunk2 == "j$@#") {
+                parse_passwording2 += "r"
+            } else if (chunk2 == "pl$)") {
+                parse_passwording2 += "t"
+            } else if (chunk2 == "gew@") {
+                parse_passwording2 += "u"
+            } else if (chunk2 == "#kdsn") {
+                parse_passwording2 += "v"
+            } else if (chunk2 == "lk!!") {
+                parse_passwording2 += "w"
+            } else if (chunk2 == "^$%#") {
+                parse_passwording2 += "x"
+            } else if (chunk2 == "****") {
+                parse_passwording2 += "y"
+            } else if (chunk2 == "&^&&") {
+                parse_passwording2 += "z"
+            } else if (chunk2 == "5bty") {
+                parse_passwording2 += "A"
+            } else if (chunk2 == "4&o(") {
+                parse_passwording2 += "B"
+            } else if (chunk2 == "3h67") {
+                parse_passwording2 += "C"
+            } else if (chunk2 == "2w3^") {
+                parse_passwording2 += "D"
+            } else if (chunk2 == "109#") {
+                parse_passwording2 += "E"
+            } else if (chunk2 == "0&#@") {
+                parse_passwording2 += "F"
+            } else if (chunk2 == "93%3") {
+                parse_passwording2 += "G"
+            } else if (chunk2 == "8pd&") {
+                parse_passwording2 += "H"
+            } else if (chunk2 == "7$#$") {
+                parse_passwording2 += "I"
+            } else if (chunk2 == "6dj%") {
+                parse_passwording2 += "J"
+            } else if (chunk2 == "5bk,") {
+                parse_passwording2 += "K"
+            } else if (chunk2 == "4ka#") {
+                parse_passwording2 += "L"
+            } else if (chunk2 == "3tyu") {
+                parse_passwording2 += "M"
+            } else if (chunk2 == "1mlk") {
+                parse_passwording2 += "N"
+            } else if (chunk2 == "0lom") {
+                parse_passwording2 += "O"
+            } else if (chunk2 == "9(j*") {
+                parse_passwording2 += "P"
+            } else if (chunk2 == "8f#@") {
+                parse_passwording2 += "Q"
+            } else if (chunk2 == "7$@#") {
+                parse_passwording2 += "R"
+            } else if (chunk2 == "6l$)") {
+                parse_passwording2 += "T"
+            } else if (chunk2 == "5ew@") {
+                parse_passwording2 += "U"
+            } else if (chunk2 == "4kdsn") {
+                parse_passwording2 += "V"
+            } else if (chunk2 == "3k!!") {
+                parse_passwording2 += "W"
+            } else if (chunk2 == "2$%#") {
+                parse_passwording2 += "X"
+            } else if (chunk2 == "1***") {
+                parse_passwording2 += "Y"
+            } else if (chunk2 == "0^&&") {
+                parse_passwording2 += "Z"
+            } else if (chunk2 == "####") {
+                parse_passwording2 += "_"
+            } else if (chunk2 == "&$#@") {
+                parse_passwording2 += "-"
+            } else if (chunk2 == "FjnK") {
+                parse_passwording2 += "="
+            } else if (chunk2 == "HDS6") {
+                parse_passwording2 += "+"
+            } else if (chunk2 == ":;lm") {
+                parse_passwording2 += "!"
+            } else if (chunk2 == "<sk,") {
+                parse_passwording2 += "@"
+            } else if (chunk2 == "T$^5") {
+                parse_passwording2 += "#"
+            } else if (chunk2 == "%&%4") {
+                parse_passwording2 += "$"
+            } else if (chunk2 == "&REl") {
+                parse_passwording2 += "%"
+            } else if (chunk2 == "DWEr") {
+                parse_passwording2 += "^"
+            } else if (chunk2 == "1342") {
+                parse_passwording2 += "&"
+            } else if (chunk2 == "1sfD") {
+                parse_passwording2 += "*"
+            } else if (chunk2 == "sfss") {
+                parse_passwording2 += "("
+            } else if (chunk2 == "LIjm") {
+                parse_passwording2 += ")"
+            } else if (chunk2 == "ADWR") {
+                parse_passwording2 += "|"
+            } else if (chunk2 == "wqew") {
+                parse_passwording2 += "~"
+            } else if (chunk2 == "vyge") {
+                parse_passwording2 += ":"
+            } else if (chunk2 == "jmse") {
+                parse_passwording2 += ";"
+            } else if (chunk2 == "shvb") {
+                parse_passwording2 += "."
+            } else if (chunk2 == "Mjku") {
+                parse_passwording2 += ">"
+            } else if (chunk2 == "$#nj") {
+                parse_passwording2 += "<"
+            } else if (chunk2 == "&&kj") {
+                parse_passwording2 += ","
+            } else if (chunk2 == "!!!j") {
+                parse_passwording2 += "1"
+            } else if (chunk2 == "#$|k") {
+                parse_passwording2 += "2"
+            } else if (chunk2 == "SA3w") {
+                parse_passwording2 += "3"
+            } else if (chunk2 == "Rioy") {
+                parse_passwording2 += "4"
+            } else if (chunk2 == "Iw32") {
+                parse_passwording2 += "5"
+            } else if (chunk2 == "FKwu") {
+                parse_passwording2 += "6"
+            } else if (chunk2 == "ihs)") {
+                parse_passwording2 += "7"
+            } else if (chunk2 == "SI3%") {
+                parse_passwording2 += "8"
+            } else if (chunk2 == "Hw89") {
+                parse_passwording2 += "9"
+            } else if (chunk2 == "oki@") {
+                parse_passwording2 += "0"
+            }
+        }
 
-    i++;
+        i++;
+        const box = document.createElement("div");
+        box.setAttribute("class", "box");
 
-    const box = document.createElement("div");
-    box.setAttribute("class", "box");
+        const box_bg = document.createElement("div");
+        box_bg.setAttribute("class", "box_bg");
 
-    const box_bg = document.createElement("div");
-    box_bg.setAttribute("class", "box_bg");
+        const span = document.createElement("span");
+        span.setAttribute("class", "head_icon");
+        span.textContent = token[t].media;
 
-    const span = document.createElement("span");
-    span.setAttribute("class", "head_icon");
-    span.textContent = item.media;
+        const st = document.createElement("p");
+        st.setAttribute("id", "status");
+        st.textContent = statuse;
 
-    const st = document.createElement("p");
-    st.setAttribute("id", "status");
-    st.textContent = statuse;
+        box_bg.append(span, st);
+        box.append(box_bg);
 
-    box_bg.append(span, st);
-    box.append(box_bg);
+        if (i > 3 && (i - 1) % 3 === 0) {
+            const boxes2 = document.createElement("div");
+            boxes2.setAttribute("class", "boxes");
+            body.append(boxes2);
+            currentBoxes = boxes2;
+        }
 
-    // اگر به 3 رسیدیم، کانتینر جدید بساز
-    if (i > 3 && (i - 1) % 3 === 0) {
-        const boxes2 = document.createElement("div");
-        boxes2.setAttribute("class", "boxes");
-        body.append(boxes2);
-        currentBoxes = boxes2; // کانتینر فعال رو عوض کن
+
+        currentBoxes.append(box);
+        const pass_page_bg = document.createElement("div")
+        pass_page_bg.setAttribute("class", "pass_page_bg")
+        const pass_bg = document.createElement("div")
+        pass_bg.setAttribute("class", "pass_bg")
+        const pass_page = document.createElement("div")
+        pass_page.setAttribute("class", "pass_page")
+        const h_icons = document.createElement("div")
+        h_icons.setAttribute("class", "h_icons")
+        const media_family = document.createElement("div")
+        media_family.setAttribute("class", "media_family")
+        const acceptble = document.createElement("div")
+        acceptble.setAttribute("class", "acceptble")
+        const information_ac = document.createElement("div")
+        information_ac.setAttribute("class", "information_ac")
+        const box_info = document.createElement("div")
+        box_info.setAttribute("class", "box_info")
+        const box_info2 = document.createElement("div")
+        box_info2.setAttribute("class", "box_info2")
+        const trash = document.createElement("button")
+        const edit = document.createElement("button")
+        const close = document.createElement("button")
+        close.setAttribute("class", "close")
+        const b_close = document.createElement("b")
+        b_close.textContent = "CLOSE"
+        close.append(b_close)
+        const h2 = document.createElement("h2")
+        h2.textContent = token[t].media
+        media_family.append(h2)
+        const h4 = document.createElement("h4")
+        h4.textContent = "Password is unBlocked"
+        acceptble.append(h4)
+        const username_p = document.createElement("p")
+        username_p.textContent = "username :"
+        const password_p = document.createElement("p")
+        password_p.textContent = "password :"
+        const account_i = document.createElement("p")
+        account_i.setAttribute("class", "account_i")
+        account_i.textContent = parse_passwording
+        const account_i2 = document.createElement("p")
+        account_i2.setAttribute("class", "account_i")
+        account_i2.textContent = parse_passwording2
+        box_info.append(username_p, account_i)
+        box_info2.append(password_p, account_i2)
+        information_ac.append(box_info, box_info2)
+
+
+        // svg 
+        const svg_trash = document.createElementNS(svg_ns, "svg");
+        svg_trash.setAttribute("width", "24");
+        svg_trash.setAttribute("height", "24");
+        svg_trash.setAttribute("viewBox", "0 0 24 24");
+        const path_t = document.createElementNS(svg_ns, "path");
+        path_t.setAttribute("fill", "currentColor");
+        path_t.setAttribute("d", "m20 9l-1.995 11.346A2 2 0 0 1 16.035 22h-8.07a2 2 0 0 1-1.97-1.654L4 9");
+        const path_t2 = document.createElementNS(svg_ns, "path");
+        path_t2.setAttribute("fill", "currentColor");
+        path_t2.setAttribute("d", "m20 9l-1.995 11.346A2 2 0 0 1 16.035 22h-8.07a2 2 0 0 1-1.97-1.654L4 9zm1-3h-5.625M3 6h5.625m0 0V4a2 2 0 0 1 2-2h2.75a2 2 0 0 1 2 2v2m-6.75 0h6.75");
+        const svg_edit = document.createElementNS(svg_ns, "svg");
+        svg_edit.setAttribute("width", "24");
+        svg_edit.setAttribute("height", "24");
+        svg_edit.setAttribute("viewBox", "0 0 24 24");
+        const path_E = document.createElementNS(svg_ns, "path");
+        path_E.setAttribute("fill", "currentColor");
+        path_E.setAttribute("d", "m7 17.013l4.413-.015l9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583zM18.045 4.458l1.589 1.583l-1.597 1.582l-1.586-1.585zM9 13.417l6.03-5.973l1.586 1.586l-6.029 5.971L9 15.006z");
+        const path_E2 = document.createElementNS(svg_ns, "path");
+        path_E2.setAttribute("fill", "currentColor");
+        path_E2.setAttribute("d", "M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01c-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2");
+        svg_trash.append(path_t, path_t2)
+        svg_edit.append(path_E, path_E2)
+        trash.append(svg_trash)
+        edit.append(svg_edit)
+        h_icons.append(trash, edit)
+
+        pass_page.append(h_icons, media_family, acceptble, information_ac, close)
+        pass_bg.append(pass_page)
+        pass_page_bg.append(pass_bg)
+        body.append(pass_page_bg)
+
+        box.addEventListener("click", () => {
+            pass_page_bg.style.display = "flex"
+
+        });
+        close.addEventListener("click", () => {
+            pass_page_bg.style.display = "none"
+        });
+        trash.addEventListener("click", function (event) {
+            event.preventDefault();
+            pass_page_bg.remove();
+            box.remove();
+            token.splice(t, 1);
+            localStorage.setItem("saved_info", JSON.stringify(token));
+            location.reload()
+
+        });
+
     }
+}
 
-    // box رو داخل کانتینر فعال بنداز
-    currentBoxes.append(box);
 
-});
+
+
+
+
 
 
 
@@ -376,12 +700,12 @@ add_2.style.display = "none"
 add_3.style.display = "none"
 next.addEventListener("click", () => {
     if (media_name.length != 0 && add_1.style.display === "flex") {
-        console.log(media_name)
+        // console.log(media_name)
         add_2.style.display = "flex"
         add_1.style.display = "none"
         m_name.textContent = media_name
         m_name.style.color = "orange"
-        console.log(token.username)
+        // console.log(token.username)
     } else {
         notif.style.display = "flex"
         setTimeout(() => { notif.style.animation = "notif_close 1s ease alternate" }, 3000)
@@ -391,131 +715,359 @@ next.addEventListener("click", () => {
 
 next2.addEventListener("click", () => {
     if (email.value.length != 0 && password.value.length != 0 && c_password.value === password.value && add_2.style.display === "flex") {
-        console.log("accese")
+        // console.log("accese")
         add_2.style.display = "none"
         add_3.style.display = "flex"
-        let gmail_lower = email.value.trim().toLowerCase()
+        let gmail_lower = password.value.trim()
+        let gmail_lower2 = email.value.trim()
+
         let passwording = ""
-        for(j in gmail_lower){
-            if(gmail_lower[j]=== "a"){
+        let passwording2 = ""
+        for (j in gmail_lower) {
+            if (gmail_lower[j] === "a") {
                 passwording += "#bty"
-            }else if(gmail_lower[j]=== "b"){
+            } else if (gmail_lower[j] === "b") {
                 passwording += "%&o("
-            }else if(gmail_lower[j]=== "c"){
+            } else if (gmail_lower[j] === "c") {
                 passwording += "ph67"
-            }else if(gmail_lower[j]=== "d"){
+            } else if (gmail_lower[j] === "d") {
                 passwording += "kw3^"
-            }else if(gmail_lower[j]=== "e"){
+            } else if (gmail_lower[j] === "e") {
                 passwording += "o09#"
-            }else if(gmail_lower[j]=== "f"){
+            } else if (gmail_lower[j] === "f") {
                 passwording += "5&#@"
-            }else if(gmail_lower[j]=== "g"){
+            } else if (gmail_lower[j] === "g") {
                 passwording += "k3%3"
-            }else if(gmail_lower[j]=== "h"){
+            } else if (gmail_lower[j] === "h") {
                 passwording += "opd&"
-            }else if(gmail_lower[j]=== "i"){
+            } else if (gmail_lower[j] === "i") {
                 passwording += "q$#$"
-            }else if(gmail_lower[j]=== "j"){
+            } else if (gmail_lower[j] === "j") {
                 passwording += "kdj%"
-            }else if(gmail_lower[j]=== "k"){
+            } else if (gmail_lower[j] === "k") {
                 passwording += "xbk,"
-            }else if(gmail_lower[j]=== "l"){
+            } else if (gmail_lower[j] === "l") {
                 passwording += "mka#"
-            }else if(gmail_lower[j]=== "m"){
+            } else if (gmail_lower[j] === "m") {
                 passwording += "2tyu"
-            }else if(gmail_lower[j]=== "n"){
+            } else if (gmail_lower[j] === "n") {
                 passwording += "lmlk"
-            }else if(gmail_lower[j]=== "o"){
+            } else if (gmail_lower[j] === "o") {
                 passwording += ":lom"
-            }else if(gmail_lower[j]=== "p"){
+            } else if (gmail_lower[j] === "p") {
                 passwording += "!(j*"
-            }else if(gmail_lower[j]=== "q"){
+            } else if (gmail_lower[j] === "q") {
                 passwording += ":f#@"
-            }else if(gmail_lower[j]=== "r"){
+            } else if (gmail_lower[j] === "r") {
                 passwording += "j$@#"
-            }else if(gmail_lower[j]=== "t"){
+            } else if (gmail_lower[j] === "t") {
                 passwording += "pl$)"
-            }else if(gmail_lower[j]=== "u"){
+            } else if (gmail_lower[j] === "u") {
                 passwording += "gew@"
-            }else if(gmail_lower[j]=== "v"){
+            } else if (gmail_lower[j] === "v") {
                 passwording += "kdsn"
-            }else if(gmail_lower[j]=== "w"){
+            } else if (gmail_lower[j] === "w") {
                 passwording += "lk!!"
-            }else if(gmail_lower[j]=== "x"){
+            } else if (gmail_lower[j] === "x") {
                 passwording += "^$%#"
-            }else if(gmail_lower[j]=== "y"){
+            } else if (gmail_lower[j] === "y") {
                 passwording += "****"
-            }else if(gmail_lower[j]=== "z"){
+            } else if (gmail_lower[j] === "z") {
                 passwording += "&^&&"
-            }else if(gmail_lower[j]=== "_"){
+            } if (gmail_lower[j] === "A") {
+                passwording += "5bty"
+            } else if (gmail_lower[j] === "B") {
+                passwording += "4&o("
+            } else if (gmail_lower[j] === "C") {
+                passwording += "3h67"
+            } else if (gmail_lower[j] === "D") {
+                passwording += "2w3^"
+            } else if (gmail_lower[j] === "E") {
+                passwording += "109#"
+            } else if (gmail_lower[j] === "F") {
+                passwording += "0&#@"
+            } else if (gmail_lower[j] === "G") {
+                passwording += "93%3"
+            } else if (gmail_lower[j] === "H") {
+                passwording += "8pd&"
+            } else if (gmail_lower[j] === "I") {
+                passwording += "7$#$"
+            } else if (gmail_lower[j] === "J") {
+                passwording += "6dj%"
+            } else if (gmail_lower[j] === "K") {
+                passwording += "5bk,"
+            } else if (gmail_lower[j] === "L") {
+                passwording += "4ka#"
+            } else if (gmail_lower[j] === "M") {
+                passwording += "3tyu"
+            } else if (gmail_lower[j] === "S") {
+                passwording += "uyt8"
+            } else if (gmail_lower[j] === "s") {
+                passwording += "5yt8"
+            } else if (gmail_lower[j] === "N") {
+                passwording += "1mlk"
+            } else if (gmail_lower[j] === "O") {
+                passwording += "0lom"
+            } else if (gmail_lower[j] === "P") {
+                passwording += "9(j*"
+            } else if (gmail_lower[j] === "Q") {
+                passwording += "8f#@"
+            } else if (gmail_lower[j] === "R") {
+                passwording += "7$@#"
+            } else if (gmail_lower[j] === "T") {
+                passwording += "6l$)"
+            } else if (gmail_lower[j] === "U") {
+                passwording += "5ew@"
+            } else if (gmail_lower[j] === "V") {
+                passwording += "4dsn"
+            } else if (gmail_lower[j] === "W") {
+                passwording += "3k!!"
+            } else if (gmail_lower[j] === "X") {
+                passwording += "2$%#"
+            } else if (gmail_lower[j] === "Y") {
+                passwording += "1***"
+            } else if (gmail_lower[j] === "Z") {
+                passwording += "0^&&"
+            } else if (gmail_lower[j] === "_") {
                 passwording += "####"
-            }else if(gmail_lower[j]=== "-"){
+            } else if (gmail_lower[j] === "-") {
                 passwording += "&$#@"
-            }else if(gmail_lower[j]=== "="){
+            } else if (gmail_lower[j] === "=") {
                 passwording += "FjnK"
-            }else if(gmail_lower[j]=== "+"){
+            } else if (gmail_lower[j] === "+") {
                 passwording += "HDS6"
-            }else if(gmail_lower[j]=== "!"){
+            } else if (gmail_lower[j] === "!") {
                 passwording += ":;lm"
-            }else if(gmail_lower[j]=== "@"){
+            } else if (gmail_lower[j] === "@") {
                 passwording += "<sk,"
-            }else if(gmail_lower[j]=== "#"){
+            } else if (gmail_lower[j] === "#") {
                 passwording += "T$^5"
-            }else if(gmail_lower[j]=== "$"){
+            } else if (gmail_lower[j] === "$") {
                 passwording += "%&%4"
-            }else if(gmail_lower[j]=== "%"){
+            } else if (gmail_lower[j] === "%") {
                 passwording += "&REl"
-            }else if(gmail_lower[j]=== "^"){
+            } else if (gmail_lower[j] === "^") {
                 passwording += "DWEr"
-            }else if(gmail_lower[j]=== "&"){
+            } else if (gmail_lower[j] === "&") {
                 passwording += "1342"
-            }else if(gmail_lower[j]=== "*"){
+            } else if (gmail_lower[j] === "*") {
                 passwording += "1sfD"
-            }else if(gmail_lower[j]=== "("){
+            } else if (gmail_lower[j] === "(") {
                 passwording += "sfss"
-            }else if(gmail_lower[j]=== ")"){
+            } else if (gmail_lower[j] === ")") {
                 passwording += "LIjm"
-            }else if(gmail_lower[j]=== "|"){
+            } else if (gmail_lower[j] === "|") {
                 passwording += "ADWR"
-            }else if(gmail_lower[j]=== "~"){
+            } else if (gmail_lower[j] === "~") {
                 passwording += "wqew"
-            }else if(gmail_lower[j]=== ":"){
+            } else if (gmail_lower[j] === ":") {
                 passwording += "vyge"
-            }else if(gmail_lower[j]=== ";"){
+            } else if (gmail_lower[j] === ";") {
                 passwording += "jmse"
-            }else if(gmail_lower[j]=== "."){
+            } else if (gmail_lower[j] === ".") {
                 passwording += "shvb"
-            }else if(gmail_lower[j]=== ">"){
+            } else if (gmail_lower[j] === ">") {
                 passwording += "Mjku"
-            }else if(gmail_lower[j]=== "<"){
+            } else if (gmail_lower[j] === "<") {
                 passwording += "$#nj"
-            }else if(gmail_lower[j]=== ","){
+            } else if (gmail_lower[j] === ",") {
                 passwording += "&&kj"
-            }else if(gmail_lower[j]=== "1"){
+            } else if (gmail_lower[j] === "1") {
                 passwording += "!!!j"
-            }else if(gmail_lower[j]=== "2"){
+            } else if (gmail_lower[j] === "2") {
                 passwording += "#$|k"
-            }else if(gmail_lower[j]=== "3"){
+            } else if (gmail_lower[j] === "3") {
                 passwording += "SA3w"
-            }else if(gmail_lower[j]=== "4"){
+            } else if (gmail_lower[j] === "4") {
                 passwording += "Rioy"
-            }else if(gmail_lower[j]=== "5"){
+            } else if (gmail_lower[j] === "5") {
                 passwording += "Iw32"
-            }else if(gmail_lower[j]=== "6"){
+            } else if (gmail_lower[j] === "6") {
                 passwording += "FKwu"
-            }else if(gmail_lower[j]=== "7"){
+            } else if (gmail_lower[j] === "7") {
                 passwording += "ihs)"
-            }else if(gmail_lower[j]=== "8"){
+            } else if (gmail_lower[j] === "8") {
                 passwording += "SI3%"
-            }else if(gmail_lower[j]=== "9"){
+            } else if (gmail_lower[j] === "9") {
                 passwording += "Hw89"
-            }else if(gmail_lower[j]=== "0"){
+            } else if (gmail_lower[j] === "0") {
                 passwording += "oki@"
             }
         }
-        
-        console.log(passwording)
-        const saved = { "media": media_name, "username": passwording, "password": password.value.trim() }
+        for (j in gmail_lower2) {
+            if (gmail_lower2[j] === "a") {
+                passwording2 += "#bty"
+            } else if (gmail_lower2[j] === "b") {
+                passwording2 += "%&o("
+            } else if (gmail_lower2[j] === "c") {
+                passwording2 += "ph67"
+            } else if (gmail_lower2[j] === "d") {
+                passwording2 += "kw3^"
+            } else if (gmail_lower2[j] === "e") {
+                passwording2 += "o09#"
+            } else if (gmail_lower2[j] === "f") {
+                passwording2 += "5&#@"
+            } else if (gmail_lower2[j] === "g") {
+                passwording2 += "k3%3"
+            } else if (gmail_lower2[j] === "h") {
+                passwording2 += "opd&"
+            } else if (gmail_lower2[j] === "i") {
+                passwording2 += "q$#$"
+            } else if (gmail_lower2[j] === "j") {
+                passwording2 += "kdj%"
+            } else if (gmail_lower2[j] === "k") {
+                passwording2 += "xbk,"
+            } else if (gmail_lower2[j] === "l") {
+                passwording2 += "mka#"
+            } else if (gmail_lower2[j] === "m") {
+                passwording2 += "2tyu"
+            } else if (gmail_lower2[j] === "n") {
+                passwording2 += "lmlk"
+            } else if (gmail_lower2[j] === "o") {
+                passwording2 += ":lom"
+            } else if (gmail_lower2[j] === "p") {
+                passwording2 += "!(j*"
+            } else if (gmail_lower2[j] === "S") {
+                passwording2 += "uyt8"
+            } else if (gmail_lower2[j] === "s") {
+                passwording2 += "5yt8"
+            } else if (gmail_lower2[j] === "q") {
+                passwording2 += ":f#@"
+            } else if (gmail_lower2[j] === "r") {
+                passwording2 += "j$@#"
+            } else if (gmail_lower2[j] === "t") {
+                passwording2 += "pl$)"
+            } else if (gmail_lower2[j] === "u") {
+                passwording2 += "gew@"
+            } else if (gmail_lower2[j] === "v") {
+                passwording2 += "kdsn"
+            } else if (gmail_lower2[j] === "w") {
+                passwording2 += "lk!!"
+            } else if (gmail_lower2[j] === "x") {
+                passwording2 += "^$%#"
+            } else if (gmail_lower2[j] === "y") {
+                passwording2 += "****"
+            } else if (gmail_lower2[j] === "z") {
+                passwording2 += "&^&&"
+            } else if (gmail_lower2[j] === "A") {
+                passwording2 += "5bty"
+            } else if (gmail_lower2[j] === "B") {
+                passwording2 += "4&o("
+            } else if (gmail_lower2[j] === "C") {
+                passwording2 += "3h67"
+            } else if (gmail_lower2[j] === "D") {
+                passwording2 += "2w3^"
+            } else if (gmail_lower2[j] === "E") {
+                passwording2 += "109#"
+            } else if (gmail_lower2[j] === "F") {
+                passwording2 += "0&#@"
+            } else if (gmail_lower2[j] === "G") {
+                passwording2 += "93%3"
+            } else if (gmail_lower2[j] === "H") {
+                passwording2 += "8pd&"
+            } else if (gmail_lower2[j] === "I") {
+                passwording2 += "7$#$"
+            } else if (gmail_lower2[j] === "J") {
+                passwording2 += "6dj%"
+            } else if (gmail_lower2[j] === "K") {
+                passwording2 += "5bk,"
+            } else if (gmail_lower2[j] === "L") {
+                passwording2 += "4ka#"
+            } else if (gmail_lower2[j] === "M") {
+                passwording2 += "3tyu"
+            } else if (gmail_lower2[j] === "N") {
+                passwording2 += "1mlk"
+            } else if (gmail_lower2[j] === "O") {
+                passwording2 += "0lom"
+            } else if (gmail_lower2[j] === "P") {
+                passwording2 += "9(j*"
+            } else if (gmail_lower2[j] === "Q") {
+                passwording2 += "8f#@"
+            } else if (gmail_lower2[j] === "R") {
+                passwording2 += "7$@#"
+            } else if (gmail_lower2[j] === "T") {
+                passwording2 += "6l$)"
+            } else if (gmail_lower2[j] === "U") {
+                passwording2 += "5ew@"
+            } else if (gmail_lower2[j] === "V") {
+                passwording2 += "4dsn"
+            } else if (gmail_lower2[j] === "W") {
+                passwording2 += "3k!!"
+            } else if (gmail_lower2[j] === "X") {
+                passwording2 += "2$%#"
+            } else if (gmail_lower2[j] === "Y") {
+                passwording2 += "1***"
+            } else if (gmail_lower2[j] === "Z") {
+                passwording2 += "0^&&"
+            } else if (gmail_lower2[j] === "_") {
+                passwording2 += "####"
+            } else if (gmail_lower2[j] === "-") {
+                passwording2 += "&$#@"
+            } else if (gmail_lower2[j] === "=") {
+                passwording2 += "FjnK"
+            } else if (gmail_lower2[j] === "+") {
+                passwording2 += "HDS6"
+            } else if (gmail_lower2[j] === "!") {
+                passwording2 += ":;lm"
+            } else if (gmail_lower2[j] === "@") {
+                passwording2 += "<sk,"
+            } else if (gmail_lower2[j] === "#") {
+                passwording2 += "T$^5"
+            } else if (gmail_lower2[j] === "$") {
+                passwording2 += "%&%4"
+            } else if (gmail_lower2[j] === "%") {
+                passwording2 += "&REl"
+            } else if (gmail_lower2[j] === "^") {
+                passwording2 += "DWEr"
+            } else if (gmail_lower2[j] === "&") {
+                passwording2 += "1342"
+            } else if (gmail_lower2[j] === "*") {
+                passwording2 += "1sfD"
+            } else if (gmail_lower2[j] === "(") {
+                passwording2 += "sfss"
+            } else if (gmail_lower2[j] === ")") {
+                passwording2 += "LIjm"
+            } else if (gmail_lower2[j] === "|") {
+                passwording2 += "ADWR"
+            } else if (gmail_lower2[j] === "~") {
+                passwording2 += "wqew"
+            } else if (gmail_lower2[j] === ":") {
+                passwording2 += "vyge"
+            } else if (gmail_lower2[j] === ";") {
+                passwording2 += "jmse"
+            } else if (gmail_lower2[j] === ".") {
+                passwording2 += "shvb"
+            } else if (gmail_lower2[j] === ">") {
+                passwording2 += "Mjku"
+            } else if (gmail_lower2[j] === "<") {
+                passwording2 += "$#nj"
+            } else if (gmail_lower2[j] === ",") {
+                passwording2 += "&&kj"
+            } else if (gmail_lower2[j] === "1") {
+                passwording2 += "!!!j"
+            } else if (gmail_lower2[j] === "2") {
+                passwording2 += "#$|k"
+            } else if (gmail_lower2[j] === "3") {
+                passwording2 += "SA3w"
+            } else if (gmail_lower2[j] === "4") {
+                passwording2 += "Rioy"
+            } else if (gmail_lower2[j] === "5") {
+                passwording2 += "Iw32"
+            } else if (gmail_lower2[j] === "6") {
+                passwording2 += "FKwu"
+            } else if (gmail_lower2[j] === "7") {
+                passwording2 += "ihs)"
+            } else if (gmail_lower2[j] === "8") {
+                passwording2 += "SI3%"
+            } else if (gmail_lower2[j] === "9") {
+                passwording2 += "Hw89"
+            } else if (gmail_lower2[j] === "0") {
+                passwording2 += "oki@"
+            }
+        }
+
+        // console.log(passwording)
+        const saved = { "media": media_name, "username": passwording, "password": passwording2 }
         const accses_token = token.push(saved)
         localStorage.setItem("saved_info", JSON.stringify(token))
         typeLine();
