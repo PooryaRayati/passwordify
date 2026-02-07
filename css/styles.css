@@ -427,11 +427,11 @@ button {
     padding: 60xp;
 }
 
-.pass_bg{
+.pass_bg {
     background: #00ffee;
     background: linear-gradient(36deg, rgba(0, 255, 238, 1) 0%, rgba(253, 29, 29, 1) 43%, rgba(255, 213, 0, 1) 74%);
     width: 90%;
-    
+
     border-radius: 20px;
     display: flex;
     justify-content: center;
@@ -441,12 +441,19 @@ button {
     animation: open_case 2s ease alternate;
 }
 
-@keyframes open_case{
-    from{width: 0px;opacity: 0;}
-    to{width: 90%;opacity: 1;}
+@keyframes open_case {
+    from {
+        width: 0px;
+        opacity: 0;
+    }
+
+    to {
+        width: 90%;
+        opacity: 1;
+    }
 }
 
-.pass_page{
+.pass_page {
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -460,12 +467,17 @@ button {
     animation: open_page 3s ease alternate;
 }
 
-@keyframes open_page{
-    from{opacity: 0;}
-    to{opacity: 1;}
+@keyframes open_page {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
-.h_icons{
+.h_icons {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -474,7 +486,7 @@ button {
     margin-top: 20px;
 }
 
-.h_icons button{
+.h_icons button {
     background-color: #0a2131;
     border: 1px #ffffffc4 solid;
     width: 50px;
@@ -482,7 +494,7 @@ button {
     border-radius: 10px;
 }
 
-.media_family{
+.media_family {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -493,7 +505,7 @@ button {
 }
 
 
-.acceptble{
+.acceptble {
     color: #00be19;
     border-radius: 20px;
     border: #00be19 2px dashed;
@@ -502,11 +514,16 @@ button {
 }
 
 @keyframes accept {
-    from{opacity: 1;}
-    to{opacity: 0.2;}
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0.2;
+    }
 }
 
-.information_ac{
+.information_ac {
     width: 100%;
     display: flex;
     align-items: center;
@@ -516,26 +533,27 @@ button {
     border: 1px solid #5e5e5e;
 }
 
-.box_info{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90%;
-}
-.box_info2{
+.box_info {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 90%;
 }
 
-.account_i{
+.box_info2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+}
+
+.account_i {
     border-radius: 6px;
     border: 1px solid #ffffff;
     padding: 10px 20px 10px 20px;
 }
 
-.close{
+.close {
     background-color: #0a2131;
     padding: 10px;
     color: red;
@@ -545,8 +563,87 @@ button {
     border-radius: 4px;
 }
 
-.close:hover{
+.close:hover {
     background-color: rgb(255, 0, 0);
     color: #ffffff;
     transition: 1s all;
+}
+
+
+.group {
+    display: flex;
+    line-height: 30px;
+    align-items: center;
+    position: relative;
+    max-width: 80%;
+
+}
+
+.input {
+    width: 100%;
+    height: 45px;
+    line-height: 30px;
+    padding: 0 5rem;
+    padding-left: 3rem;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    outline: none;
+    background-color: #f8fafc;
+    color: #0d0c22;
+    transition: .5s ease;
+}
+
+.input::placeholder {
+    color: #94a3b8;
+}
+
+.input:focus,
+input:hover {
+    outline: none;
+    border-color: rgba(129, 140, 248);
+    background-color: #fff;
+    box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+}
+
+.icon_p {
+    position: absolute;
+    color: #000000;
+    left: 1rem;
+    fill: none;
+    width: 1rem;
+    height: 1rem;
+}
+
+.entring_pass_bg {
+    position: fixed;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.entring_pass {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 50px;
+    color: #ffffff;
+    justify-content: center;
+    width: 300px;
+    height: 400px;
+    background: #00ccff;
+    background: linear-gradient(0deg, rgba(0, 204, 255, 1) 0%, rgba(9, 9, 121, 1) 49%, rgba(2, 0, 36, 1) 100%);
+    border-radius: 20px;
+}
+
+#submit_pass{
+    width: 100px;
+    color: #ffffff;
+    border: #007714fb;
+    background-color: #007714;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }

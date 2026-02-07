@@ -6,6 +6,7 @@ const add_input_box_bg = document.querySelector(".add_input_box_bg")
 const cancle = document.querySelector("#cancle")
 const next = document.querySelector("#next")
 const cancle2 = document.querySelector("#cancle2")
+const log_in = document.querySelector("#log_in")
 const next2 = document.querySelector("#next2")
 const add_1 = document.querySelector("#add_1")
 const add_2 = document.querySelector("#add_2")
@@ -23,20 +24,75 @@ const games = document.querySelector(".games")
 const isnagram = document.querySelector(".isnagram")
 const twitter = document.querySelector(".twitter")
 const tiktok = document.querySelector(".tiktok")
-const statuse = "Password is Blocked"
+let statuse = "Password is Blocked"
 const body = document.querySelector("#body")
+const password_inp = document.querySelector("#password_inp")
+const submit_pass = document.querySelector("#submit_pass")
+const entring_pass_bg = document.querySelector(".entring_pass_bg")
 const boxes = document.querySelector(".boxes")
 let media_name = ""
 let accses_stage = 0
 const svg_ns = "http://www.w3.org/2000/svg"
 
-number = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-char = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+let account = []
+function get_account() {
+    fetch("https://68ed2ee7eff9ad3b1404d776.mockapi.io/api/v1/poorix_card", {
+        method: "GET",
+
+    })
+        .then((res) => res.json())
+        .then((data) => account = data);
+
+}
+get_account()
 
 
+let user_acces = "no"
+setTimeout(() => {
+    // notification.textContent = `Welcome ${account[2].username}`
+    console.log(account)
+    if (localStorage.getItem("acess") === "logged_out") {
+        entring_pass_bg.style.display = "flex"
+        for (f in account) {
+            if (localStorage.getItem("name") === account[f].username) {
+                user_acces = account[f].username
+            }
+        }
+    }
 
+}, 2000)
 
+let acces_passing = "false"
+let correct_pass = ""
+if (localStorage.getItem("acess") === "logged_out") {
+    entring_pass_bg.style.display = "flex"
+    setTimeout(() => {
+        for (r in account) {
+            if (account[r].username === user_acces) {
+                correct_pass = account[r].password
+            }
+        }
+        submit_pass.addEventListener("click", (event) => {
+            event.preventDefault()
+            if (password_inp.value.trim() === correct_pass) {
+                acces_passing = "true"
+                localStorage.setItem("acess", "logged_in")
+                location.reload()
+            } else {
+                notif.style.display = "flex"
+                notification.textContent = "Please enter the correct password"
+                setTimeout(() => { notif.style.animation = "notif_close 1s ease alternate" }, 3000)
+                setTimeout(() => { notif.style.animation = "notif 1s ease alternate", notif.style.display = "none", notification.textContent = "Please fill the information correctly" }, 4000)
+            }
+        })
+    }, 2000)
+}
 
+if (localStorage.getItem("acess") === "logged_in") {
+    log_in.style.animation = "logged_in_effect 1s ease alternate infinite"
+    acces_passing = "true"
+}
 
 
 let parse_passwording = ""
@@ -417,7 +473,12 @@ if (token != null) {
 
         const st = document.createElement("p");
         st.setAttribute("id", "status");
+        if (acces_passing === "true") {
+            statuse = "Password is open"
+            st.style.color = "green"
+        }
         st.textContent = statuse;
+
 
         box_bg.append(span, st);
         box.append(box_bg);
@@ -509,10 +570,12 @@ if (token != null) {
         pass_page_bg.append(pass_bg)
         body.append(pass_page_bg)
 
-        box.addEventListener("click", () => {
-            pass_page_bg.style.display = "flex"
+        if (acces_passing === "true") {
+            box.addEventListener("click", () => {
+                pass_page_bg.style.display = "flex"
 
-        });
+            });
+        }
         close.addEventListener("click", () => {
             pass_page_bg.style.display = "none"
         });
@@ -1067,7 +1130,7 @@ next2.addEventListener("click", () => {
         }
 
         // console.log(passwording)
-        const saved = { "media": media_name, "username": passwording, "password": passwording2 }
+        const saved = { "media": media_name, "username": passwording2, "password": passwording }
         const accses_token = token.push(saved)
         localStorage.setItem("saved_info", JSON.stringify(token))
         typeLine();
