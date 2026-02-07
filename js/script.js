@@ -777,7 +777,7 @@ next.addEventListener("click", () => {
 })
 
 next2.addEventListener("click", () => {
-    if (email.value.length != 0 && password.value.length != 0 && c_password.value === password.value && add_2.style.display === "flex") {
+    if (email.value.length != 0 && password.value.length >= 4 && c_password.value === password.value && add_2.style.display === "flex") {
         // console.log("accese")
         add_2.style.display = "none"
         add_3.style.display = "flex"
