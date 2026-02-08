@@ -1,10 +1,16 @@
+@font-face{
+    src: url(../vazir-font-v16.1.0/Vazir-Medium.woff2);
+    font-family: "Vazir";
+}
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    /* font-family: "Vazir"; */
     background-color: #0a2131;
     height: 100vh;
     left: 0px;
     right: 0px;
     top: 0px;
+
 }
 
 .head {
@@ -150,12 +156,13 @@ button {
     color: #ff0000;
     font-size: 10px;
     padding-inline: 6px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 7px;
+    padding-bottom: 7px;
     border-radius: 30px;
     margin-top: 18px;
     margin-inline: 9px;
     text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .add_input_box {
@@ -616,6 +623,7 @@ input:hover {
 
 .entring_pass_bg {
     position: fixed;
+    z-index: 3;
     display: none;
     align-items: center;
     justify-content: center;

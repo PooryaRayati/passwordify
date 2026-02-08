@@ -30,10 +30,60 @@ const password_inp = document.querySelector("#password_inp")
 const submit_pass = document.querySelector("#submit_pass")
 const entring_pass_bg = document.querySelector(".entring_pass_bg")
 const boxes = document.querySelector(".boxes")
+const change_lang = document.querySelector("#change_lang")
+const mt1 = document.querySelector("#mt1")
+const mt2 = document.querySelector("#mt2")
+const mt3 = document.querySelector("#mt3")
+const mt4 = document.querySelector("#mt4")
+const mt5 = document.querySelector("#mt5")
+
+
+
+
 let media_name = ""
 let accses_stage = 0
 const svg_ns = "http://www.w3.org/2000/svg"
 
+
+
+let language = JSON.parse(localStorage.getItem("language"))
+if (!localStorage.getItem("language")) {
+    console.log("ko")
+    language = "Eng";
+    localStorage.setItem("language", JSON.stringify(language))
+}
+if (language === "Eng") {
+    notification.textContent = "Please fill the information correctly"
+    mt1.textContent = "Please enter your account's password"
+    mt2.textContent = "Please select your preferred media"
+    mt3.textContent = "Please fill the box about your"
+    mt4.textContent = "Add a Password"
+    mt5.textContent = "If the media you want doesn't exist , create it"
+    statuse = "Password is Blocked"
+    body.style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif"
+}
+if (language === "Farsi") {
+    notification.textContent = "خطا!!   اطلاعات را درست وارد کنید"
+    mt1.textContent = "لطفا رمز اکانت خود را وارد کنید"
+    mt2.textContent = "لطفا برنامه مورد نظر خود را انتخاب کنید"
+    mt3.textContent = "لطفا اطلاعات را وارد کنید"
+    mt4.textContent = "اضافه کردن رمز"
+    mt5.textContent = "اگر برنامه ی مورد نظر شما موجد نیست , آن را بسازید"
+    body.style.fontFamily = "Vazir"
+}
+
+change_lang.addEventListener("click", () => {
+    if (language === "Eng") {
+        language = "Farsi"
+        localStorage.setItem("language", JSON.stringify(language))
+        location.reload()
+    } else if (language === "Farsi") {
+        language = "Eng"
+        localStorage.setItem("language", JSON.stringify(language))
+        location.reload()
+    }
+
+})
 
 let account = []
 function get_account() {
@@ -581,11 +631,23 @@ if (token != null) {
         });
         trash.addEventListener("click", function (event) {
             event.preventDefault();
+
+            entring_pass_bg.style.display = "flex"
+
+            event.preventDefault()
+
+            localStorage.setItem("acess", "logged_in")
             pass_page_bg.remove();
             box.remove();
             token.splice(t, 1);
             localStorage.setItem("saved_info", JSON.stringify(token));
             location.reload()
+
+            notif.style.display = "flex"
+            notification.textContent = "Please enter the correct password"
+            setTimeout(() => { notif.style.animation = "notif_close 1s ease alternate" }, 3000)
+            setTimeout(() => { notif.style.animation = "notif 1s ease alternate", notif.style.display = "none", notification.textContent = "Please fill the information correctly", localStorage.setItem("acess", "logged_out") }, 4000)
+
 
         });
 

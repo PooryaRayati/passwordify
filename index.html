@@ -12,13 +12,13 @@
 <body id="body">
     <div class="notif_bg">
         <div class="notif">
-            <b class="notification">Please fill the information correctly</b>
+            <b class="notification"></b>
         </div>
     </div>
 
     <div class="entring_pass_bg">
         <div class="entring_pass">
-            <b>Please enter your account's password</b>
+            <b id="mt1"></b>
             <div class="group">
                 <svg stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
                     class="icon_p">
@@ -29,14 +29,18 @@
                 <input id="password_inp" class="input" placeholder="password">
             </div>
             <button id="submit_pass">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 48 48"><path fill="currentColor" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="m4 24l5-5l10 10L39 9l5 5l-25 25z" clip-rule="evenodd"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 48 48">
+                    <path fill="currentColor" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="4" d="m4 24l5-5l10 10L39 9l5 5l-25 25z"
+                        clip-rule="evenodd" />
+                </svg>
             </button>
         </div>
     </div>
 
     <div class="add_input_box_bg">
         <div id="add_1" class="add_input_box">
-            <p>Please select your preferred media</p>
+            <p id="mt2"></p>
             <hr style="width: 60%;opacity: 0.8;">
             <br>
             <div class="icons">
@@ -144,7 +148,7 @@
                 </div>
             </div>
             <hr style="width: 60%;opacity: 0.8;">
-            <p style="font-size: 12px;">If the media you want doesn't exist , create it</p>
+            <p id="mt5" style="font-size: 12px;"></p>
             <input type="text" id="creat_media" placeholder="Enter name of media ...">
             <br>
             <div class="btn">
@@ -161,7 +165,7 @@
             </div>
         </div>
         <div id="add_2" class="add_input_box">
-            <p>Please fill the box about your <b id="m_name"></b></p>
+            <p id="mt3"> </p><b id="m_name"></b>
             <hr style="width: 60%;opacity: 0.8;">
             <br>
             <form>
@@ -244,14 +248,15 @@
             <text x="238" y="46" class="stars">***</text>
         </svg>
         <div class="buttons">
-            <a href="">
-                <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-                        <path fill="currentColor"
-                            d="M2.5 22.6C2.5 10.873 12.2 1.5 24 1.5s21.5 9.373 21.5 21.1v8.488q0 .275-.027.543q.027.18.027.369c0 1.97-.243 4.117-.48 5.757c-.372 2.567-1.891 5.113-4.672 6.214C37.355 45.157 32.158 46.5 24 46.5a2.5 2.5 0 0 1 0-5c7.603 0 12.165-1.25 14.507-2.177c.762-.302 1.39-1.077 1.564-2.282q.033-.229.065-.466c-1.406.313-3.03.615-4.645.784c-2.122.223-4.191-1.056-4.578-3.36c-.226-1.34-.413-3.273-.413-6c0-2.725.187-4.657.413-5.998c.387-2.304 2.456-3.583 4.578-3.36c.852.089 1.707.215 2.53.36C36.393 12.997 30.783 8.5 24 8.5S11.608 12.997 9.979 19.001a37 37 0 0 1 2.53-.36c2.122-.223 4.191 1.056 4.579 3.36c.225 1.34.412 3.273.412 5.999s-.187 4.658-.412 5.999c-.388 2.304-2.457 3.583-4.579 3.36c-2.198-.23-4.41-.705-6.07-1.12c-2.4-.601-3.939-2.777-3.939-5.15z" />
-                    </svg>
-                </button>
-            </a>
+            <button id="change_lang">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                        d="M5.08 8h2.95c.32-1.25.78-2.45 1.38-3.56c-1.84.63-3.37 1.9-4.33 3.56m2.42 4c0-.68.06-1.34.14-2H4.26c-.16.64-.26 1.31-.26 2s.1 1.36.26 2h3.38c-.08-.66-.14-1.32-.14-2m-2.42 4a8 8 0 0 0 4.33 3.56A15.7 15.7 0 0 1 8.03 16zM12 4.04c-.83 1.2-1.48 2.53-1.91 3.96h3.82c-.43-1.43-1.08-2.76-1.91-3.96M18.92 8a8.03 8.03 0 0 0-4.33-3.56c.6 1.11 1.06 2.31 1.38 3.56zM12 19.96c.83-1.2 1.48-2.53 1.91-3.96h-3.82c.43 1.43 1.08 2.76 1.91 3.96m2.59-.4A8.03 8.03 0 0 0 18.92 16h-2.95a15.7 15.7 0 0 1-1.38 3.56M19.74 10h-3.38c.08.66.14 1.32.14 2s-.06 1.34-.14 2h3.38c.16-.64.26-1.31.26-2s-.1-1.36-.26-2M9.66 10c-.09.65-.16 1.32-.16 2s.07 1.34.16 2h4.68c.09-.66.16-1.32.16-2s-.07-1.35-.16-2z"
+                        opacity="0.3" />
+                    <path fill="currentColor"
+                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2m6.93 6h-2.95a15.7 15.7 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.92 8M12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96M4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A8 8 0 0 1 5.08 16m2.95-8H5.08a8 8 0 0 1 4.33-3.56A15.7 15.7 0 0 0 8.03 8M12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96M14.34 14H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2m.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56M16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2z" />
+                </svg>
+            </button>
 
             <a href="./pages/analize.html">
                 <button>
@@ -287,8 +292,8 @@
                 </g>
             </svg>
         </button>
-        <h4>
-            Add a Password
+        <h4 id="mt4">
+
         </h4>
     </div>
     <hr style="width: 80%;margin-top: 10px;">
