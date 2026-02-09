@@ -1,7 +1,8 @@
-@font-face{
+@font-face {
     src: url(../vazir-font-v16.1.0/Vazir-Medium.woff2);
     font-family: "Vazir";
 }
+
 body {
     /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
     /* font-family: "Vazir"; */
@@ -18,6 +19,7 @@ body {
     backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
+    position: relative;
     justify-content: space-between;
     height: 70px;
     padding-inline: 10px;
@@ -288,7 +290,8 @@ button {
 
 
 #next,
-#next2 {
+#next2,
+#next3 {
     background-color: #0c2e46;
     border: #00f7ff 2px solid;
     color: #ffffff;
@@ -300,13 +303,15 @@ button {
 }
 
 #next svg,
-#next2 svg {
+#next2 svg,
+#next3 svg {
     width: 20px;
     height: 20px;
 }
 
 #cancle,
-#cancle2 {
+#cancle2,
+#cancle3 {
     color: #ffffff;
     font-size: 18px;
     background-color: #0c2e46;
@@ -646,7 +651,7 @@ input:hover {
     border-radius: 20px;
 }
 
-#submit_pass{
+#submit_pass {
     width: 100px;
     color: #ffffff;
     border: #007714fb;
@@ -655,3 +660,56 @@ input:hover {
     padding: 5px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
+
+.edit_box_bg {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+}
+
+.edit_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    padding: 50px 10px 50px 10px;
+    background-color: #051725;
+    border-radius: 10px;
+    border: #f8fafc 1px solid;
+}
+
+.ad{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    bottom: 0px;
+    background-color: #0a2131;
+    color: #ffffff;
+    z-index: 0;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+}
+
+.ad_bg{
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    bottom: 0px;
+    animation: ad 1s ease alternate;
+}
+
+@keyframes ad {
+    from{opacity: 0;transform: translatex(-250px);}
+    to{opacity: 1;transform: translatex(0px);}
+}
+

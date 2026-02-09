@@ -6,6 +6,12 @@ const add_input_box_bg = document.querySelector(".add_input_box_bg")
 const cancle = document.querySelector("#cancle")
 const next = document.querySelector("#next")
 const cancle2 = document.querySelector("#cancle2")
+const next3 = document.querySelector("#next3")
+const cancle3 = document.querySelector("#cancle3")
+const edit_E = document.querySelector("#edit_E")
+const edit_p = document.querySelector("#edit_p")
+const edit_cp = document.querySelector("#edit_cp")
+const edit_box_bg = document.querySelector(".edit_box_bg")
 const log_in = document.querySelector("#log_in")
 const next2 = document.querySelector("#next2")
 const add_1 = document.querySelector("#add_1")
@@ -102,8 +108,7 @@ let user_acces = "no"
 setTimeout(() => {
     // notification.textContent = `Welcome ${account[2].username}`
     console.log(account)
-    if (localStorage.getItem("acess") === "logged_out") {
-        entring_pass_bg.style.display = "flex"
+    if (localStorage.getItem("acess") === "logged_out" || localStorage.getItem("acess") === "logged_in") {
         for (f in account) {
             if (localStorage.getItem("name") === account[f].username) {
                 user_acces = account[f].username
@@ -173,7 +178,7 @@ if (token != null) {
                 parse_passwording += "b"
             } else if (chunk == "ph67") {
                 parse_passwording += "c"
-            } else if (chunk == "%&o(") {
+            } else if (chunk == "kw3^") {
                 parse_passwording += "d"
             } else if (chunk == "uyt8") {
                 parse_passwording += "S"
@@ -211,7 +216,7 @@ if (token != null) {
                 parse_passwording += "t"
             } else if (chunk == "gew@") {
                 parse_passwording += "u"
-            } else if (chunk == "#kdsn") {
+            } else if (chunk == "kdsn") {
                 parse_passwording += "v"
             } else if (chunk == "lk!!") {
                 parse_passwording += "w"
@@ -261,7 +266,7 @@ if (token != null) {
                 parse_passwording += "T"
             } else if (chunk == "5ew@") {
                 parse_passwording += "U"
-            } else if (chunk == "4kdsn") {
+            } else if (chunk == "4dsn") {
                 parse_passwording += "V"
             } else if (chunk == "3k!!") {
                 parse_passwording += "W"
@@ -383,7 +388,7 @@ if (token != null) {
                 parse_passwording2 += "t"
             } else if (chunk2 == "gew@") {
                 parse_passwording2 += "u"
-            } else if (chunk2 == "#kdsn") {
+            } else if (chunk2 == "kdsn") {
                 parse_passwording2 += "v"
             } else if (chunk2 == "lk!!") {
                 parse_passwording2 += "w"
@@ -433,7 +438,7 @@ if (token != null) {
                 parse_passwording2 += "T"
             } else if (chunk2 == "5ew@") {
                 parse_passwording2 += "U"
-            } else if (chunk2 == "4kdsn") {
+            } else if (chunk2 == "4dsn") {
                 parse_passwording2 += "V"
             } else if (chunk2 == "3k!!") {
                 parse_passwording2 += "W"
@@ -631,16 +636,11 @@ if (token != null) {
         });
         trash.addEventListener("click", function (event) {
             event.preventDefault();
-
-            entring_pass_bg.style.display = "flex"
-
-            event.preventDefault()
-
-            localStorage.setItem("acess", "logged_in")
             pass_page_bg.remove();
             box.remove();
             token.splice(t, 1);
-            localStorage.setItem("saved_info", JSON.stringify(token));
+            localStorage.setItem("saved_info", JSON.stringify(token))
+            typeLine();
             location.reload()
 
             notif.style.display = "flex"
@@ -650,7 +650,400 @@ if (token != null) {
 
 
         });
+        edit.addEventListener("click", function (event) {
+            event.preventDefault()
+            correct_pass = ""
+            if (localStorage.getItem("acess") === "logged_in") {
+                entring_pass_bg.style.display = "flex"
+                for (f in account) {
+                    if (account[f].username === user_acces) {
+                        correct_pass = account[f].password
+                    }
+                    console.log(account[f].username)
+                    console.log(user_acces)
+                }
+                submit_pass.addEventListener("click", (event) => {
+                    event.preventDefault()
+                    if (password_inp.value.trim() === correct_pass) {
+                        entring_pass_bg.style.display = "none"
+                        edit_box_bg.style.display = "flex"
+                        next3.addEventListener("click", (event) => {
+                            event.preventDefault()
+                            if (edit_E.value.trim().length > 0 && edit_p.value.trim().length > 4 && edit_p.value.trim() === edit_cp.value.trim()) {
+                                let gmail_lower = edit_E.value.trim()
+                                let gmail_lower2 = edit_p.value.trim()
 
+                                let passwording = ""
+                                let passwording2 = ""
+                                for (j in gmail_lower) {
+                                    if (gmail_lower[j] === "a") {
+                                        passwording += "#bty"
+                                    } else if (gmail_lower[j] === "b") {
+                                        passwording += "%&o("
+                                    } else if (gmail_lower[j] === "c") {
+                                        passwording += "ph67"
+                                    } else if (gmail_lower[j] === "d") {
+                                        passwording += "kw3^"
+                                    } else if (gmail_lower[j] === "e") {
+                                        passwording += "o09#"
+                                    } else if (gmail_lower[j] === "f") {
+                                        passwording += "5&#@"
+                                    } else if (gmail_lower[j] === "g") {
+                                        passwording += "k3%3"
+                                    } else if (gmail_lower[j] === "h") {
+                                        passwording += "opd&"
+                                    } else if (gmail_lower[j] === "i") {
+                                        passwording += "q$#$"
+                                    } else if (gmail_lower[j] === "j") {
+                                        passwording += "kdj%"
+                                    } else if (gmail_lower[j] === "k") {
+                                        passwording += "xbk,"
+                                    } else if (gmail_lower[j] === "l") {
+                                        passwording += "mka#"
+                                    } else if (gmail_lower[j] === "m") {
+                                        passwording += "2tyu"
+                                    } else if (gmail_lower[j] === "n") {
+                                        passwording += "lmlk"
+                                    } else if (gmail_lower[j] === "o") {
+                                        passwording += ":lom"
+                                    } else if (gmail_lower[j] === "p") {
+                                        passwording += "!(j*"
+                                    } else if (gmail_lower[j] === "q") {
+                                        passwording += ":f#@"
+                                    } else if (gmail_lower[j] === "r") {
+                                        passwording += "j$@#"
+                                    } else if (gmail_lower[j] === "t") {
+                                        passwording += "pl$)"
+                                    } else if (gmail_lower[j] === "u") {
+                                        passwording += "gew@"
+                                    } else if (gmail_lower[j] === "v") {
+                                        passwording += "kdsn"
+                                    } else if (gmail_lower[j] === "w") {
+                                        passwording += "lk!!"
+                                    } else if (gmail_lower[j] === "x") {
+                                        passwording += "^$%#"
+                                    } else if (gmail_lower[j] === "y") {
+                                        passwording += "****"
+                                    } else if (gmail_lower[j] === "z") {
+                                        passwording += "&^&&"
+                                    } if (gmail_lower[j] === "A") {
+                                        passwording += "5bty"
+                                    } else if (gmail_lower[j] === "B") {
+                                        passwording += "4&o("
+                                    } else if (gmail_lower[j] === "C") {
+                                        passwording += "3h67"
+                                    } else if (gmail_lower[j] === "D") {
+                                        passwording += "2w3^"
+                                    } else if (gmail_lower[j] === "E") {
+                                        passwording += "109#"
+                                    } else if (gmail_lower[j] === "F") {
+                                        passwording += "0&#@"
+                                    } else if (gmail_lower[j] === "G") {
+                                        passwording += "93%3"
+                                    } else if (gmail_lower[j] === "H") {
+                                        passwording += "8pd&"
+                                    } else if (gmail_lower[j] === "I") {
+                                        passwording += "7$#$"
+                                    } else if (gmail_lower[j] === "J") {
+                                        passwording += "6dj%"
+                                    } else if (gmail_lower[j] === "K") {
+                                        passwording += "5bk,"
+                                    } else if (gmail_lower[j] === "L") {
+                                        passwording += "4ka#"
+                                    } else if (gmail_lower[j] === "M") {
+                                        passwording += "3tyu"
+                                    } else if (gmail_lower[j] === "S") {
+                                        passwording += "uyt8"
+                                    } else if (gmail_lower[j] === "s") {
+                                        passwording += "5yt8"
+                                    } else if (gmail_lower[j] === "N") {
+                                        passwording += "1mlk"
+                                    } else if (gmail_lower[j] === "O") {
+                                        passwording += "0lom"
+                                    } else if (gmail_lower[j] === "P") {
+                                        passwording += "9(j*"
+                                    } else if (gmail_lower[j] === "Q") {
+                                        passwording += "8f#@"
+                                    } else if (gmail_lower[j] === "R") {
+                                        passwording += "7$@#"
+                                    } else if (gmail_lower[j] === "T") {
+                                        passwording += "6l$)"
+                                    } else if (gmail_lower[j] === "U") {
+                                        passwording += "5ew@"
+                                    } else if (gmail_lower[j] === "V") {
+                                        passwording += "4dsn"
+                                    } else if (gmail_lower[j] === "W") {
+                                        passwording += "3k!!"
+                                    } else if (gmail_lower[j] === "X") {
+                                        passwording += "2$%#"
+                                    } else if (gmail_lower[j] === "Y") {
+                                        passwording += "1***"
+                                    } else if (gmail_lower[j] === "Z") {
+                                        passwording += "0^&&"
+                                    } else if (gmail_lower[j] === "_") {
+                                        passwording += "####"
+                                    } else if (gmail_lower[j] === "-") {
+                                        passwording += "&$#@"
+                                    } else if (gmail_lower[j] === "=") {
+                                        passwording += "FjnK"
+                                    } else if (gmail_lower[j] === "+") {
+                                        passwording += "HDS6"
+                                    } else if (gmail_lower[j] === "!") {
+                                        passwording += ":;lm"
+                                    } else if (gmail_lower[j] === "@") {
+                                        passwording += "<sk,"
+                                    } else if (gmail_lower[j] === "#") {
+                                        passwording += "T$^5"
+                                    } else if (gmail_lower[j] === "$") {
+                                        passwording += "%&%4"
+                                    } else if (gmail_lower[j] === "%") {
+                                        passwording += "&REl"
+                                    } else if (gmail_lower[j] === "^") {
+                                        passwording += "DWEr"
+                                    } else if (gmail_lower[j] === "&") {
+                                        passwording += "1342"
+                                    } else if (gmail_lower[j] === "*") {
+                                        passwording += "1sfD"
+                                    } else if (gmail_lower[j] === "(") {
+                                        passwording += "sfss"
+                                    } else if (gmail_lower[j] === ")") {
+                                        passwording += "LIjm"
+                                    } else if (gmail_lower[j] === "|") {
+                                        passwording += "ADWR"
+                                    } else if (gmail_lower[j] === "~") {
+                                        passwording += "wqew"
+                                    } else if (gmail_lower[j] === ":") {
+                                        passwording += "vyge"
+                                    } else if (gmail_lower[j] === ";") {
+                                        passwording += "jmse"
+                                    } else if (gmail_lower[j] === ".") {
+                                        passwording += "shvb"
+                                    } else if (gmail_lower[j] === ">") {
+                                        passwording += "Mjku"
+                                    } else if (gmail_lower[j] === "<") {
+                                        passwording += "$#nj"
+                                    } else if (gmail_lower[j] === ",") {
+                                        passwording += "&&kj"
+                                    } else if (gmail_lower[j] === "1") {
+                                        passwording += "!!!j"
+                                    } else if (gmail_lower[j] === "2") {
+                                        passwording += "#$|k"
+                                    } else if (gmail_lower[j] === "3") {
+                                        passwording += "SA3w"
+                                    } else if (gmail_lower[j] === "4") {
+                                        passwording += "Rioy"
+                                    } else if (gmail_lower[j] === "5") {
+                                        passwording += "Iw32"
+                                    } else if (gmail_lower[j] === "6") {
+                                        passwording += "FKwu"
+                                    } else if (gmail_lower[j] === "7") {
+                                        passwording += "ihs)"
+                                    } else if (gmail_lower[j] === "8") {
+                                        passwording += "SI3%"
+                                    } else if (gmail_lower[j] === "9") {
+                                        passwording += "Hw89"
+                                    } else if (gmail_lower[j] === "0") {
+                                        passwording += "oki@"
+                                    }
+                                }
+                                for (j in gmail_lower2) {
+                                    if (gmail_lower2[j] === "a") {
+                                        passwording2 += "#bty"
+                                    } else if (gmail_lower2[j] === "b") {
+                                        passwording2 += "%&o("
+                                    } else if (gmail_lower2[j] === "c") {
+                                        passwording2 += "ph67"
+                                    } else if (gmail_lower2[j] === "d") {
+                                        passwording2 += "kw3^"
+                                    } else if (gmail_lower2[j] === "e") {
+                                        passwording2 += "o09#"
+                                    } else if (gmail_lower2[j] === "f") {
+                                        passwording2 += "5&#@"
+                                    } else if (gmail_lower2[j] === "g") {
+                                        passwording2 += "k3%3"
+                                    } else if (gmail_lower2[j] === "h") {
+                                        passwording2 += "opd&"
+                                    } else if (gmail_lower2[j] === "i") {
+                                        passwording2 += "q$#$"
+                                    } else if (gmail_lower2[j] === "j") {
+                                        passwording2 += "kdj%"
+                                    } else if (gmail_lower2[j] === "k") {
+                                        passwording2 += "xbk,"
+                                    } else if (gmail_lower2[j] === "l") {
+                                        passwording2 += "mka#"
+                                    } else if (gmail_lower2[j] === "m") {
+                                        passwording2 += "2tyu"
+                                    } else if (gmail_lower2[j] === "n") {
+                                        passwording2 += "lmlk"
+                                    } else if (gmail_lower2[j] === "o") {
+                                        passwording2 += ":lom"
+                                    } else if (gmail_lower2[j] === "p") {
+                                        passwording2 += "!(j*"
+                                    } else if (gmail_lower2[j] === "S") {
+                                        passwording2 += "uyt8"
+                                    } else if (gmail_lower2[j] === "s") {
+                                        passwording2 += "5yt8"
+                                    } else if (gmail_lower2[j] === "q") {
+                                        passwording2 += ":f#@"
+                                    } else if (gmail_lower2[j] === "r") {
+                                        passwording2 += "j$@#"
+                                    } else if (gmail_lower2[j] === "t") {
+                                        passwording2 += "pl$)"
+                                    } else if (gmail_lower2[j] === "u") {
+                                        passwording2 += "gew@"
+                                    } else if (gmail_lower2[j] === "v") {
+                                        passwording2 += "kdsn"
+                                    } else if (gmail_lower2[j] === "w") {
+                                        passwording2 += "lk!!"
+                                    } else if (gmail_lower2[j] === "x") {
+                                        passwording2 += "^$%#"
+                                    } else if (gmail_lower2[j] === "y") {
+                                        passwording2 += "****"
+                                    } else if (gmail_lower2[j] === "z") {
+                                        passwording2 += "&^&&"
+                                    } else if (gmail_lower2[j] === "A") {
+                                        passwording2 += "5bty"
+                                    } else if (gmail_lower2[j] === "B") {
+                                        passwording2 += "4&o("
+                                    } else if (gmail_lower2[j] === "C") {
+                                        passwording2 += "3h67"
+                                    } else if (gmail_lower2[j] === "D") {
+                                        passwording2 += "2w3^"
+                                    } else if (gmail_lower2[j] === "E") {
+                                        passwording2 += "109#"
+                                    } else if (gmail_lower2[j] === "F") {
+                                        passwording2 += "0&#@"
+                                    } else if (gmail_lower2[j] === "G") {
+                                        passwording2 += "93%3"
+                                    } else if (gmail_lower2[j] === "H") {
+                                        passwording2 += "8pd&"
+                                    } else if (gmail_lower2[j] === "I") {
+                                        passwording2 += "7$#$"
+                                    } else if (gmail_lower2[j] === "J") {
+                                        passwording2 += "6dj%"
+                                    } else if (gmail_lower2[j] === "K") {
+                                        passwording2 += "5bk,"
+                                    } else if (gmail_lower2[j] === "L") {
+                                        passwording2 += "4ka#"
+                                    } else if (gmail_lower2[j] === "M") {
+                                        passwording2 += "3tyu"
+                                    } else if (gmail_lower2[j] === "N") {
+                                        passwording2 += "1mlk"
+                                    } else if (gmail_lower2[j] === "O") {
+                                        passwording2 += "0lom"
+                                    } else if (gmail_lower2[j] === "P") {
+                                        passwording2 += "9(j*"
+                                    } else if (gmail_lower2[j] === "Q") {
+                                        passwording2 += "8f#@"
+                                    } else if (gmail_lower2[j] === "R") {
+                                        passwording2 += "7$@#"
+                                    } else if (gmail_lower2[j] === "T") {
+                                        passwording2 += "6l$)"
+                                    } else if (gmail_lower2[j] === "U") {
+                                        passwording2 += "5ew@"
+                                    } else if (gmail_lower2[j] === "V") {
+                                        passwording2 += "4dsn"
+                                    } else if (gmail_lower2[j] === "W") {
+                                        passwording2 += "3k!!"
+                                    } else if (gmail_lower2[j] === "X") {
+                                        passwording2 += "2$%#"
+                                    } else if (gmail_lower2[j] === "Y") {
+                                        passwording2 += "1***"
+                                    } else if (gmail_lower2[j] === "Z") {
+                                        passwording2 += "0^&&"
+                                    } else if (gmail_lower2[j] === "_") {
+                                        passwording2 += "####"
+                                    } else if (gmail_lower2[j] === "-") {
+                                        passwording2 += "&$#@"
+                                    } else if (gmail_lower2[j] === "=") {
+                                        passwording2 += "FjnK"
+                                    } else if (gmail_lower2[j] === "+") {
+                                        passwording2 += "HDS6"
+                                    } else if (gmail_lower2[j] === "!") {
+                                        passwording2 += ":;lm"
+                                    } else if (gmail_lower2[j] === "@") {
+                                        passwording2 += "<sk,"
+                                    } else if (gmail_lower2[j] === "#") {
+                                        passwording2 += "T$^5"
+                                    } else if (gmail_lower2[j] === "$") {
+                                        passwording2 += "%&%4"
+                                    } else if (gmail_lower2[j] === "%") {
+                                        passwording2 += "&REl"
+                                    } else if (gmail_lower2[j] === "^") {
+                                        passwording2 += "DWEr"
+                                    } else if (gmail_lower2[j] === "&") {
+                                        passwording2 += "1342"
+                                    } else if (gmail_lower2[j] === "*") {
+                                        passwording2 += "1sfD"
+                                    } else if (gmail_lower2[j] === "(") {
+                                        passwording2 += "sfss"
+                                    } else if (gmail_lower2[j] === ")") {
+                                        passwording2 += "LIjm"
+                                    } else if (gmail_lower2[j] === "|") {
+                                        passwording2 += "ADWR"
+                                    } else if (gmail_lower2[j] === "~") {
+                                        passwording2 += "wqew"
+                                    } else if (gmail_lower2[j] === ":") {
+                                        passwording2 += "vyge"
+                                    } else if (gmail_lower2[j] === ";") {
+                                        passwording2 += "jmse"
+                                    } else if (gmail_lower2[j] === ".") {
+                                        passwording2 += "shvb"
+                                    } else if (gmail_lower2[j] === ">") {
+                                        passwording2 += "Mjku"
+                                    } else if (gmail_lower2[j] === "<") {
+                                        passwording2 += "$#nj"
+                                    } else if (gmail_lower2[j] === ",") {
+                                        passwording2 += "&&kj"
+                                    } else if (gmail_lower2[j] === "1") {
+                                        passwording2 += "!!!j"
+                                    } else if (gmail_lower2[j] === "2") {
+                                        passwording2 += "#$|k"
+                                    } else if (gmail_lower2[j] === "3") {
+                                        passwording2 += "SA3w"
+                                    } else if (gmail_lower2[j] === "4") {
+                                        passwording2 += "Rioy"
+                                    } else if (gmail_lower2[j] === "5") {
+                                        passwording2 += "Iw32"
+                                    } else if (gmail_lower2[j] === "6") {
+                                        passwording2 += "FKwu"
+                                    } else if (gmail_lower2[j] === "7") {
+                                        passwording2 += "ihs)"
+                                    } else if (gmail_lower2[j] === "8") {
+                                        passwording2 += "SI3%"
+                                    } else if (gmail_lower2[j] === "9") {
+                                        passwording2 += "Hw89"
+                                    } else if (gmail_lower2[j] === "0") {
+                                        passwording2 += "oki@"
+                                    }
+                                }
+                                const edited = { "media": token[t].media, "username": passwording, "password": passwording2 }
+                                token.push(edited)
+                                token.splice(t, 1);
+                                localStorage.setItem("saved_info", JSON.stringify(token));
+                                location.reload()
+                            }
+                        })
+                        cancle3.addEventListener("click", (event) => {
+                            event.preventDefault()
+                            edit_box_bg.style.display = "none"
+                        })
+
+                    } else {
+                        notif.style.display = "flex"
+                        notification.textContent = "Please enter the correct password"
+                        setTimeout(() => { notif.style.animation = "notif_close 1s ease alternate" }, 3000)
+                        setTimeout(() => { notif.style.animation = "notif 1s ease alternate", notif.style.display = "none", notification.textContent = "Please fill the information correctly" }, 4000)
+                    }
+                })
+            } else {
+                notif.style.display = "flex"
+                notification.textContent = "Please log in"
+                setTimeout(() => { notif.style.animation = "notif_close 1s ease alternate" }, 3000)
+                setTimeout(() => { notif.style.animation = "notif 1s ease alternate", notif.style.display = "none", notification.textContent = "Please fill the information correctly" }, 4000)
+            }
+
+        })
     }
 }
 
@@ -783,7 +1176,7 @@ tiktok.addEventListener("click", function () {
 })
 
 isnagram.addEventListener("click", function () {
-    media_name = "Instagram"
+    media_name = "I agram"
     isnagram.style.border = "2px solid rgb(235, 125, 0)"
     gmail.style.border = "none"
     call_of_duty.style.border = "none"
@@ -824,7 +1217,7 @@ add_1.style.display = "flex"
 add_2.style.display = "none"
 add_3.style.display = "none"
 next.addEventListener("click", () => {
-    if (media_name.length != 0 && add_1.style.display === "flex") {
+    if (media_name.length != 0 && add_1.style.display === "flex" && media_name.length < 8) {
         // console.log(media_name)
         add_2.style.display = "flex"
         add_1.style.display = "none"
@@ -1241,7 +1634,7 @@ let lineIndex = 0;
 let charIndex = 0;
 let currentLine = "";
 let typingSpeed = 1;   // سرعت تایپ (میلی‌ثانیه)
-let lineDelay = 100;    // مکث بین خط‌ها
+let lineDelay = 30;    // مکث بین خط‌ها
 
 const cursor = document.createElement("span");
 cursor.className = "cursor";
