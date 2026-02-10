@@ -462,3 +462,17 @@ button:hover {
 .not_good{
     display: none;
 }
+
+.back_btn{
+    display: flex;
+    justify-content: center;
+}
+
+.back_btn button{
+    background-color:#0a2131;
+    border: #f8fafc 3px solid;
+    color: #fff;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+}

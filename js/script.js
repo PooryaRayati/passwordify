@@ -42,7 +42,13 @@ const mt2 = document.querySelector("#mt2")
 const mt3 = document.querySelector("#mt3")
 const mt4 = document.querySelector("#mt4")
 const mt5 = document.querySelector("#mt5")
+const ad = document.querySelector(".ad_bg")
 
+
+setTimeout(()=>{ad.style.animation = "ad_close 1s ease alternate"},3000)
+setTimeout(()=>{ad.style.animation = "ad 1s ease alternate" , ad.style
+    .display = "none"
+},4000)
 
 
 
@@ -54,7 +60,6 @@ const svg_ns = "http://www.w3.org/2000/svg"
 
 let language = JSON.parse(localStorage.getItem("language"))
 if (!localStorage.getItem("language")) {
-    console.log("ko")
     language = "Eng";
     localStorage.setItem("language", JSON.stringify(language))
 }
@@ -107,7 +112,7 @@ get_account()
 let user_acces = "no"
 setTimeout(() => {
     // notification.textContent = `Welcome ${account[2].username}`
-    console.log(account)
+    // console.log(account)
     if (localStorage.getItem("acess") === "logged_out" || localStorage.getItem("acess") === "logged_in") {
         for (f in account) {
             if (localStorage.getItem("name") === account[f].username) {
@@ -659,8 +664,7 @@ if (token != null) {
                     if (account[f].username === user_acces) {
                         correct_pass = account[f].password
                     }
-                    console.log(account[f].username)
-                    console.log(user_acces)
+                    
                 }
                 submit_pass.addEventListener("click", (event) => {
                     event.preventDefault()
@@ -669,7 +673,7 @@ if (token != null) {
                         edit_box_bg.style.display = "flex"
                         next3.addEventListener("click", (event) => {
                             event.preventDefault()
-                            if (edit_E.value.trim().length > 0 && edit_p.value.trim().length > 4 && edit_p.value.trim() === edit_cp.value.trim()) {
+                            if (edit_E.value.trim().length > 0 && edit_p.value.trim().length >= 4 && edit_p.value.trim() === edit_cp.value.trim()) {
                                 let gmail_lower = edit_E.value.trim()
                                 let gmail_lower2 = edit_p.value.trim()
 

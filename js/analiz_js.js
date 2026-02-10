@@ -15,12 +15,16 @@ const good4 = document.querySelector("#good4")
 const analiz4 = document.querySelector("#analiz4")
 const not_good4 = document.querySelector("#not_good4")
 let ways = document.querySelector(".ways")
+let back_btn = document.querySelector(".back_btn")
 let errors = ""
+
+
 
 let token = JSON.parse(localStorage.getItem("saved_info"))
 
 start.addEventListener("click", () => {
     // console.log(token.length)
+    back_btn.style.display = "none"
     start.style.display = "none"
     loader.style.display = "flex"
     text.style.display = "flex"
@@ -58,6 +62,6 @@ start.addEventListener("click", () => {
     }
 
     setTimeout(() => {
-        analiz4.style.display = "none", good4.style.display = "block", loader.style.display = "none" , text.style.display = "none",ways.textContent = errors , ways.style.color = "#ffffff"}, 15000)
+        analiz4.style.display = "none", good4.style.display = "block", loader.style.display = "none" , text.style.display = "none",ways.textContent = errors , ways.style.color = "#ffffff" , back_btn.style.display = "flex"}, 15000)
 })
 
